@@ -1,9 +1,10 @@
 if (process.env.NODE_ENV !== "production") {
     require("dotenv").config()
+    
 }
 
-
 // Importing Libraies that we installed using npm
+const path = require('path');
 const express = require("express")
 const app = express()
 const bcrypt = require("bcrypt") // Importing bcrypt package
@@ -23,9 +24,12 @@ initializePassport(
 
 const users = []
 
+app.use(session({ secret: 'somevalue' }));
 app.use(express.urlencoded({extended: false}))
 app.use(flash())
+app.use(express.static(path.join(__dirname,'public')));
 app.use(session({
+    
     secret: process.env.SESSION_SECRET,
     resave: false, // We wont resave the session variable if nothing is changed
     saveUninitialized: false
@@ -35,6 +39,7 @@ app.use(passport.session())
 app.use(methodOverride("_method"))
 
 // Configuring the register post functionality
+
 app.post("/login", checkNotAuthenticated, passport.authenticate("local", {
     successRedirect: "/",
     failureRedirect: "/login",
@@ -59,6 +64,7 @@ app.post("/register", checkNotAuthenticated, async (req, res) => {
         console.log(e);
         res.redirect("/register")
     }
+    
 })
 
 // Routes
@@ -66,11 +72,11 @@ app.get('/', checkAuthenticated, (req, res) => {
     res.render("index.ejs", {name: req.user.name})
 })
 
-app.get('/login', checkNotAuthenticated, (req, res) => {
+app.get('/login', checkNotAuthenticated, (_req, res) => {
     res.render("login.ejs")
 })
 
-app.get('/register', checkNotAuthenticated, (req, res) => {
+app.get('/register', checkNotAuthenticated, (_req, res) => {
     res.render("register.ejs")
 })
 // End Routes
@@ -79,6 +85,9 @@ app.get('/register', checkNotAuthenticated, (req, res) => {
 //     req.logOut()
 //     res.redirect('/login')
 //   })
+app.get('/contact', (_req, res) => {
+    res.sendFile(__dirname + '/views/contact.html')
+})
 
 app.delete("/logout", (req, res) => {
     req.logout(req.user, err => {
@@ -100,5 +109,6 @@ function checkNotAuthenticated(req, res, next){
     }
     next()
 }
+
 
 app.listen(3000)
