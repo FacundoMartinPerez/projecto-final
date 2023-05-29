@@ -1,45 +1,33 @@
 <!DOCTYPE html>
-<html lang="es">
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CSS GRID Menú</title>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap" rel="stylesheet">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="./css/main.css">
 </head>
-
 <body>
 <style>
-:root{
-    --primary: #eeeeee;
-    --secondary: #227c70;
-    --green: #82cd47;
-    --secondary-light: rgb(34, 124, 112, 0.2);
-    --secondary-light-2: rgb(127, 183, 126, 0.1);
-    --white: #fff;
-    --black: #393e46;
-
-    --shadow: 0px 2px 8px 0px var(--secpndary-light);
-}
-*{
+* {
     margin: 0;
+    padding: 0;
     box-sizing: border-box;
-    list-style-type:none;
+    font-family: sans-serif;
 }
-html{
-    scroll-behavior: smooth;
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem;
+    background-color: #ececec;
 }
 h1{font-size: 3.5em;}
 h2{font-size: 2.7em;}
 h3{font-size: 1.5em;}
-p{font-size: 1.25em;}
-body{
-    font-family: 'Roboto', sans-serif;
-}
+p{font-size: 1.25em;} 
 button{
     font-size: 1.5em;
     font-weight: bold;
@@ -49,6 +37,7 @@ button{
     box-shadow: 2px 2px 10px rgba(0,0,0,0.5);
     color: white;
     background-color: rgb(57, 33, 79);
+    cursor: pointer;
     
 }
 button:hover{
@@ -64,12 +53,12 @@ background-color: rgb(113, 40, 182);
 header{
     background-color:  rgb(27, 27, 27);
 }
-header .logo{
-margin: 0;
-padding: 0;
+.logo{
+margin: 5px;
+padding: 5px;
 font-weight: bold;
-color: rgb(145, 77, 209);
-font-size: .7em;
+color: rgb(255, 255, 255);
+font-size: 5rem;
 }
 
 header .container{
@@ -102,92 +91,37 @@ header a:hover{
 flex-direction: column;
 align-items: center;
 }
-
-.heros{
-    background: 
-    linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2));
-    background-color: #000;
-    background-size: cover;
-    min-height: 120px;
-    height: 10vh;
-    color: #fff;
+.logo {
+    max-width: 5rem;
 }
 
-.nav{
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    --state-close: scale(0);
-    --state-hamburguer:scale(1);
-    --state-menu: translate(-100%);
-    padding: 40px 0;
-    display: grid;
-    justify-content: space-between;
-    align-items: center;
-    grid-template-columns: repeat(2, max-content);
+.nav-list {
+    list-style-type: none;
+    gap: 1rem;
 }
-
-.nav:target{
-    --state-menu: translate(0);
-    --state-close: scale(1);
-    --state-hamburguer:scale(0);
+.nav-list li{
+display: inline-block;
+padding: 0 20px;
 }
-
-.nav__logo{
-    padding-bottom: 50px;
-    font-size: 2.5rem;
-    padding-right: 0px;
-    padding-left: 60px;
-}
-
-.nav__hamburguer, 
-.nav__close{
-    cursor: pointer;
-    grid-column: -2/-1;
-    grid-row: 1/2;
-    transition: .4s transform;
-}
-
-.nav__hamburguer{
-    transform: var(--state-hamburguer);
-}
-
-.nav__close{
-    transform: var(--state-close);
-}
-
-.nav__icon{
-    width: 40px;
-}
-
-.nav__links{
-    background-color: #000;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 0;
-
-    display: grid;
-    align-content: center;
-    gap: 2em;
-    padding-left: 5%;
-
-    transform: var(--state-menu);
-    transition: .3s transform;
-}
-
-.nav__item{
-    padding-right: 80px;
-    list-style: none;
-}
-
-.nav__link{
-    color: #fff;
+.nav-list li a {
+   
     text-decoration: none;
-    font-size: 1rem;
-    letter-spacing: 2px;
+    color: #ffffff;
+}
+.nav-list li a:hover {
+    text-decoration: none;
+    color: #b72bc7;
+}
+.nav__logo{
+    color: #ececec;
+    cursor: pointer;
+}
+.nav__logo:hover{
+    color: #8c319f;
+}
+.abrir-menu,
+.cerrar-menu {
+    display: none;
 }
 #hero{
     display: flex;
@@ -424,178 +358,84 @@ footer p{
     
 }
 
-
-/* Estilos para dispositivos de escritorio */
-@media (min-width: 768px) {
-  /* Estilos para el botón de menú en dispositivos de escritorio */
-  #toggle-button.desktop {
-    display: block;
-    position: fixed;
-    top: 80px;
-    left: 40px;
-    z-index: 9999;
-    background:transparent;
-    border: rgb(0, 0, 0);
-    color: #000000;
-    font-size: 50px;
-    cursor: pointer;
-  }
-  .desktop{
-    padding-right: 100px;
-    margin-bottom: 20px;
-    top: 80px;
-    align-items: center;
-    justify-content: space-between;
-    padding-right: 1rem;
-    font-size:0.9rem;
-    font-weight: 560;
-    border:2px solid var(--blacks);
-    border-radius: 100px;
-    cursor: pointer;
-    width: 200px;
-    height: 50px;
-    transition: box-shadow 0.2s, background-color 0.2s;
-
-  }
-  .desktop:hover{
+@media screen and (max-width: 550px) {
+    .abrir-menu,
+    .cerrar-menu {
+        display: block;
+        top: 80px;
+        left: 40px;
+        font-size: 1.25rem;
+        background: rgb(80, 28, 130);
+        cursor: pointer;
+        border: rgb(62, 20, 20);
+        color: #ffffff;
+        border:10px solid var(--blacks);
+        border-radius: 300px;
+        width: 200px;
+        height: 80px;
+        transition: box-shadow 0.2s, background-color 0.2s;
+    }
+    .cerrar-menu:hover{
         background-color: var(--secondary-light-2);
         box-shadow: var(--shadow)
     }
-  #toggle-button.desktop span {
-    display: block;
-    width: 25px;
-    height: 20px;
-    background-color: #000;
-    margin-bottom: 5px;
-  }
+    .abrir-menu {
+        color: #ffffff;
+    }
 
-  /* Estilos para el menú de escritorio */
-  #desktop-menu.desktop {
-    display: none;
-    position: fixed;
-    top: 120px;
-    left: 470px;
-    width: 150px;
-    height: 130px;
-    background-color: #ffffff;
-    padding-left: 10px;
-    border-radius: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    animation: slideDown 0.3s ease;
-  }
+    .nav {
+        opacity: 0;
+        visibility: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: end;
+        gap: 4rem;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #1c1c1c;
+        padding: 2rem;
+        box-shadow: 0 0 0 100000vmax rgba(0, 0, 0, .5);
+    }
 
-  #desktop-menu.desktop.active {
-    display: block;
-  }
-
-  #desktop-menu.desktop ul {
-    list-style: none;
-    margin-bottom: 10px;
-    padding: 7px;
-  }
-
-  #desktop-menu.desktop li {
-    margin-top: 10px;
-    padding-left: 10px;
-  }
-
-  #desktop-menu.desktop a {
-    color: #000;
-    text-decoration: none;
-    padding: 20px;
+    .nav.visible {
+        opacity: 1;
+        visibility: visible;
+        min-height: 3150px;
+    }
     
-    font-size: 1rem;
-  }
-  #desktop-menu.desktop.boton {
-    padding-top: 100px;
+    .nav-list {
+        display: flex;
+        flex-direction: column;
+        align-items: end;
+    }
+
+    .nav-list li a {
+        color: #ecececec;
+    }
+    
 }
-  }
-  #desktop-menu.desktop.text{
-    color: #000;
-    text-decoration: none;
-    
-    padding-bottom: 20px;
-    font-size: 1rem;
-  }
-#desktop-menu.desktop.boton :hover{
-    color: blueviolet;
-}
-@media (min-width:768px) {
-    .nav{
-        --state-hamburguer:scale(0);
-        --state-menu: translate(0);
-    }
-    
-    .nav:target{
-        --state-close: scale(0);
-    }
-
-    .nav__links{
-        padding: 20px;
-        background-color: unset;
-        position: unset;
-        gap: 2em;
-        grid-auto-flow: column;
-    
-        transform: unset;
-
-        grid-column: -2/-1;
-        grid-row: 1/2;
-    }
-
-    .nav__link{
-        font-size: 1.3rem;
-        letter-spacing: none;
-    }
-}
-
-
 </style>
-    <header class="heros">
+    <header>
+        <h2 class="nav__logo">TTECH</h2>
+        <button id="abrir" class="abrir-menu">
+            Bienvenido, <%= name %> 
+          </button>
+        <nav class="nav" id="nav">
+            <button class="cerrar-menu" id="cerrar"> Bienvenido, <%= name %> </button>
+            <ul class="nav-list">
 
-        <nav class="nav contenedor" id="nav">
-
-            <h2 class="nav__logo">TTECH</h2>
-
-            <ul class="nav__links">
-                <button id="toggle-button-desktop" class="desktop">
-                    Bienvenido, <%= name %> 
-                  </button>
-                  
-                  <nav id="desktop-menu" class="desktop">
-                    <ul>
-                      <!-- Contenido del menú de escritorio -->
-                     
-                      <form class="boton" action="/logout?_method=DELETE" method="POST">
-                        <button class="text" type="submit"  >Logout</button>
-                      </form>
-                    </ul>
-                </nav>
-                <li class="nav__item">
-                    <a href="#" class="nav__link">Inicio</a>
-                </li>
-                <li class="nav__item">
-                    <a href="#" class="nav__link">Blog</a>
-                </li>
-                <li class="nav__item">
-                    <a href="#" class="nav__link">Acerca de</a>
-                </li>
-                <li class="nav__item">
-                    <a href="#" class="nav__link">Contacto</a>
-                </li>
-                
+                <li><a href="#">Inicio</a></li>
+                <li><a href="#">Quiénes somos</a></li>
+                <li><a href="#">Servicios</a></li>
+                <li><a href="#">Qué hacemos</a></li>
+                <li><a href="#">Contacto</a></li>
+                <li><a href=""><form class="boton" action="/logout?_method=DELETE" method="POST">
+                    <button class="text" type="submit">Logout</button>
+                  </form></a></li>
             </ul>
-
-            <a href="#nav" class="nav__hamburguer">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJ7G0fbu9HbBIG5t27BJhntDK2-e_Q8T9Htazwj8HZy1ybrC-jnqWb7uZA19849wu_pyk&usqp=CAU" class="nav__icon">
-            </a>
-
-            <a href="#" class="nav__close">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJ7G0fbu9HbBIG5t27BJhntDK2-e_Q8T9Htazwj8HZy1ybrC-jnqWb7uZA19849wu_pyk&usqp=CAU" class="nav__icon">
-            </a>
-            
         </nav>
-       
     </header>
     <section id="hero">
         <h1>Aprendé a Programar<br>con Nosotros</h1>
@@ -668,30 +508,19 @@ footer p{
             <p>Derechos reservados &copy; TTech 2023</p>
         
         </footer>
-<script>
-  // Función para manejar la apertura y cierre del menú de escritorio
-function toggleDesktopMenu() {
-    var menu = document.getElementById("desktop-menu");
-    menu.classList.toggle("active");
-  }
-  
-  // Función para manejar la apertura y cierre del menú móvil
-  function toggleMobileMenu() {
-    var menu = document.getElementById("mobile-menu");
-    menu.classList.toggle("active");
-  }
-  
-  // Manejador de eventos para el botón de menú de escritorio
-  var desktopButton = document.getElementById("toggle-button-desktop");
-  desktopButton.addEventListener("click", toggleDesktopMenu);
-  
-  // Manejador de eventos para el botón de menú móvil
-  var mobileButton = document.getElementById("toggle-button-mobile");
-  mobileButton.addEventListener("click", toggleMobileMenu);
-  
+    <script>
+        const nav = document.querySelector("#nav");
+const abrir = document.querySelector("#abrir");
+const cerrar = document.querySelector("#cerrar");
 
-</script>
-<script src="script.js"></script>
+abrir.addEventListener("click", () => {
+    nav.classList.add("visible");
+})
+
+cerrar.addEventListener("click", () => {
+    nav.classList.remove("visible");
+})
+    </script>
+    <script src="./js/main.js"></script>
 </body>
-
 </html>
